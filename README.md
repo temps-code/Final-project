@@ -59,6 +59,6 @@ Estamos disponibles en las siguientes plataformas:
 Queremos asegurarnos de que nuestra tienda virtual cumpla con tus necesidades. Por favor, ayúdanos respondiendo a nuestra encuesta breve:
 <div align="center">
 
-[![Formulario](https://img.shields.io/badge/Formulario-Completar-brightgreen?style=for-the-badge&logo=google&logoColor=white)](https://forms.gle/YOUR_FORM_LINK)
+[![Formulario](https://img.shields.io/badge/Formulario-Completar-brightgreen?style=for-the-badge&logo=google&logoColor=white)](https://forms.gle/Kg66GUjD24Cvu7zU9)
 
 </div>
