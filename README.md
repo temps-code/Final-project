@@ -2,7 +2,7 @@
 
 # 404 Devs Not Found
 
-<img src="https://path-to-your-logo-image.com/logo.jpg" alt="404 Devs Not Found Logo" width="200"/>
+<img src="https://github.com/temps-code/Final-project/blob/main/logo.jpg?raw=true" alt="D² Innovation Logo" width="200"/>
 
 **Turning Glitches into Greatness**
 
