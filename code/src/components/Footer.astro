@@ -1,4 +1,9 @@
-<footer class="bg-[#7cc77a] py-16">
+---
+import ModalPrivacidad from "./ModalPrivacidad.astro"
+import ModalTerminos from "./ModalTerminos.astro"
+---
+
+<footer class="bg-green-500 py-16">
     <div class="container mx-auto flex flex-col gap-16 px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-center">
         
@@ -31,8 +36,8 @@
         <div class="flex flex-col gap-8">
           <p class="font-semibold text-2xl uppercase text-white">Información</p>
           <ul class="space-y-4 text-white text-lg font-light">
-            <li><a href="#ModalPrivacity" class="hover:text-[#151515]">Políticas de Privacidad</a></li>
-            <li><a href="#ModalConditions" class="hover:text-[#151515]">Términos y condiciones</a></li>
+            <li><button class="open-modal-privacity-button hover:text-[#151515] bg-transparent border-none cursor-pointer text-white">Políticas de Privacidad</button></li>
+            <li><button class="open-modal-conditions-button hover:text-[#151515] bg-transparent border-none cursor-pointer text-white">Términos y Condiciones</button></li>
           </ul>
         </div>
   
@@ -63,4 +68,27 @@
       </div>
     </div>
   </footer>
+  <ModalPrivacidad />
+  <ModalTerminos />
+
+  <script>
+    const handleOpenModalPrivacidad = () => {
+      const modalPrivacity = document.getElementById('modal-privacidad')!;
+      modalPrivacity.classList.remove('hidden');
+    };
   
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalPrivacityButton = document.querySelector('.open-modal-privacity-button')!;
+      modalPrivacityButton.addEventListener('click', handleOpenModalPrivacidad);
+    });
+
+    const handleOpenModalTerminos = () => {
+      const modalConditions = document.getElementById('modal-terminos-y-condiciones')!;
+      modalConditions.classList.remove('hidden');
+    };
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalConditionsButton = document.querySelector('.open-modal-conditions-button')!;
+      modalConditionsButton.addEventListener('click', handleOpenModalTerminos);
+    });
+  </script>
