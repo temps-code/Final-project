@@ -1,0 +1,144 @@
+<div
+  id="modal-terminos-y-condiciones"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+>
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg max-w-[90vw] max-h-[75vh] overflow-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+    <h2 class="text-3xl font-bold mb-6">Términos y Condiciones</h2>
+    
+    <p class="mb-4">
+      <strong>El Rey Del Bolo</strong> es una página web propiedad de [Nombre del propietario], con domicilio en [Dirección].
+    </p>
+    
+    <p class="mb-4">
+      Estos Términos y Condiciones rigen el uso de la página web El Rey Del Bolo. Al acceder o utilizar la página web, usted acepta estos Términos y Condiciones.
+    </p>
+    
+    <ol class="list-decimal pl-6 space-y-4 mb-4">
+      <li>
+        <strong>Uso de la página web</strong>
+        <ul class="list-disc pl-6 mt-2">
+          <li>Distribuir, modificar, copiar, reproducir, publicar, transmitir, mostrar, vender, alquilar, ceder, sublicenciar, crear trabajos derivados de, o explotar de cualquier forma la página web o su contenido, en todo o en parte.</li>
+          <li>Utilizar la página web para cualquier propósito comercial o publicitario.</li>
+          <li>Utilizar la página web de cualquier forma que pueda dañar, desactivar, sobrecargar o deteriorar la página web o sus sistemas informáticos.</li>
+          <li>Utilizar la página web de cualquier forma que pueda violar los derechos de propiedad intelectual o cualquier otro derecho de terceros.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Contenido de la página web</strong>
+        <p class="mt-2">
+          El contenido de la página web, incluyendo, pero sin limitarse a, textos, imágenes, videos, audio y software, es propiedad de <strong>Sabores del Mundo</strong> o sus licenciantes. Usted puede utilizar el contenido de la página web únicamente para su uso personal y no comercial, y siempre que cite la fuente. No puede utilizar el contenido de la página web de ninguna forma que pueda violar los derechos de propiedad intelectual o cualquier otro derecho de <strong>Sabores del Mundo</strong> o sus licenciantes.
+        </p>
+      </li>
+      <li>
+        <strong>Enlaces a otras páginas web</strong>
+        <p class="mt-2">
+          La página web puede contener enlaces a otras páginas web. Sabores por el Mundo no tiene control sobre el contenido de esas páginas web, y no es responsable de su contenido.
+        </p>
+      </li>
+      <li>
+        <strong>Modificaciones a los Términos y Condiciones</strong>
+        <p class="mt-2">
+          <strong>Sabores del Mundo</strong> puede modificar estos Términos y Condiciones en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en la página web. Usted es responsable de revisar periódicamente los Términos y Condiciones para mantenerse informado de cualquier modificación.
+        </p>
+      </li>
+      <li>
+        <strong>Ley aplicable</strong>
+        <p class="mt-2">
+          Estos Términos y Condiciones se rigen por las leyes de Bolivia. Cualquier disputa relacionada con estos Términos y Condiciones se resolverá en los tribunales competentes de Bolivia.
+        </p>
+      </li>
+      <li>
+        <strong>Información de contacto</strong>
+        <p class="mt-2">
+          Si tiene alguna pregunta o comentario sobre estos Términos y Condiciones, puede ponerse en contacto con nosotros en SaboresDelMundo@support.com o 123-456-7890.
+        </p>
+      </li>
+    </ol>
+
+    <button
+      id="close-modal-terminos-y-condiciones"
+      class="fixed right-8 top-8 rounded bg-black/60 p-4 transition hover:scale-150 hover:bg-green-500 hover:text-white"
+      >
+      <svg
+        class="size-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+<style>
+  .politica-dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    animation-name: join-anim;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes join-anim {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .modal-content {
+    background: #222; 
+    color: #fff;
+    border-radius: 8px; 
+    max-height: 80vh; 
+    overflow-y: auto; 
+  }
+</style>
+
+<script>
+  function handleClose() {
+    const modal = document.getElementById("modal-terminos-y-condiciones");
+    if (modal) {
+      modal.classList.add("hidden");
+    }
+  }
+
+  function handleKeyPress(event:KeyboardEvent) {
+    if (event.key === "Escape") {
+      handleClose();
+    }
+  }
+
+  function handleClickOutside(event:MouseEvent) {
+    const modal = document.getElementById("modal-terminos-y-condiciones");
+    const modalContent = document.querySelector("#modal-terminos-y-condiciones > div")!;
+    
+    if (modal && !modalContent.contains(event.target as Node)) {
+      handleClose();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const closeModalButton = document.getElementById("close-modal-terminos-y-condiciones");
+    if (closeModalButton) {
+      closeModalButton.addEventListener("click", handleClose);
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    const modal = document.getElementById("modal-terminos-y-condiciones");
+    if (modal) {
+      modal.addEventListener("click", handleClickOutside);
+    }
+  });
+</script>
