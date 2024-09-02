@@ -1,0 +1,337 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+let formData = {
+  email: "",
+  firstName: "",
+  lastName: "",
+  city: "",
+  country: "",
+  subject: "",
+  message: "",
+  attachment: null,
+};
+
+function handleInputChange(event) {
+  const target = event.target;
+  if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+    const { name, value } = target;
+    formData[name] = value;
+  }
+}
+
+function handleFileChange(event) {
+  const target = event.target;
+  if (target instanceof HTMLInputElement) {
+    const file = target.files?.[0] || null;
+    formData.attachment = file;
+  }
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  console.log("Datos del formulario:", formData);
+  alert("Mensaje enviado correctamente.");
+
+  // Vaciar el formulario manualmente
+  const form = document.getElementById("contact-form");
+  if (form) {
+    // Vaciar los campos de texto y área de texto
+    const inputs = form.querySelectorAll("input[type='text'], input[type='email'], textarea");
+    inputs.forEach(input => {
+      if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+        input.value = "";
+      }
+    });
+
+   
+    const fileInputs = form.querySelectorAll("input[type='file']");
+    fileInputs.forEach(fileInput => {
+      if (fileInput instanceof HTMLInputElement) {
+        fileInput.value = "";
+      }
+    });
+
+    formData = {
+      email: "",
+      firstName: "",
+      lastName: "",
+      city: "",
+      country: "",
+      subject: "",
+      message: "",
+      attachment: null,
+    };
+  }
+}
+---
+
+<Layout title="Contacto">
+  <section class="py-12 bg-green-100">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row gap-12">
+      <!-- Columna izquierda: Formulario -->
+      <div class="w-full md:w-1/2 bg-white p-8 rounded-md shadow-lg">
+        <h2 class="text-center text-3xl font-bold mb-4 text-green-800">
+          Contáctanos
+        </h2>
+        <h6 class="text-center mb-8 text-green-800">
+          ¿TIENES ALGUNA PREGUNTA? ¡ESTAMOS ENCANTADOS DE AYUDARTE!
+        </h6>
+        <form class="grid grid-cols-1 gap-6" id="contact-form">
+          <!-- Correo Electrónico -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Correo Electrónico</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Escriba su correo electrónico"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Nombre -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Nombre</label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="Su nombre"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Apellido -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Apellido</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Su apellido"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Ciudad -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Ciudad</label>
+            <input
+              type="text"
+              name="city"
+              placeholder="De qué ciudad escribe"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- País -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">País</label>
+            <input
+              type="text"
+              name="country"
+              placeholder="De qué país escribe"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Título del Mensaje -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Título del Mensaje</label>
+            <input
+              type="text"
+              name="subject"
+              placeholder="Cuál es el título del mensaje?"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Mensaje -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Mensaje</label>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Escribe tu mensaje aquí"
+              required
+              class="mt-2 p-3 rounded-md border border-green-300"></textarea>
+          </div>
+          <!-- Documento Adjunto -->
+          <div class="flex flex-col">
+            <label class="font-semibold text-green-800">Documento Adjunto</label>
+            <input
+              type="file"
+              name="attachment"
+              class="mt-2 p-3 rounded-md border border-green-300"
+            />
+          </div>
+          <!-- Botón Enviar -->
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="mt-4 bg-green-800 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors duration-300">
+              Enviar mensaje
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Columna derecha: Contenido adicional -->
+      <div class="w-full md:w-1/2 flex flex-col space-y-12">
+        <!-- Preguntas Frecuentes -->
+        <section class="bg-white p-8 rounded-md shadow-lg">
+          <h3 class="text-2xl font-bold text-green-800 mb-6">Preguntas Frecuentes</h3>
+          <div class="space-y-4">
+            <div class="border-b border-green-200 pb-4">
+              <h4 class="text-xl font-semibold text-green-800">¿Cómo puedo contactarlos?</h4>
+              <p class="mt-2 text-gray-700">Puede contactarnos a través de este formulario, o enviarnos un correo a elreydelbolo@support.com.</p>
+            </div>
+            <div class="border-b border-green-200 pb-4">
+              <h4 class="text-xl font-semibold text-green-800">¿Qué tipos de sabores de coca machucada ofrecen?</h4>
+              <p class="mt-2 text-gray-700">Ofrecemos una amplia variedad de sabores, incluyendo coco, banana, chicle, red bull, entre otros.</p>
+            </div>
+            <div class="border-b border-green-200 pb-4">
+              <h4 class="text-xl font-semibold text-green-800">¿Cuál es el horario de atención?</h4>
+              <p class="mt-2 text-gray-700">Nuestro horario de atención es de lunes a sábado, de 9:00 AM a 7:00 PM.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Galería de Imágenes Dinámica -->
+        <section class="bg-white p-8 rounded-md shadow-lg">
+          <h3 class="text-2xl font-bold text-green-800 mb-6">¡EL REY DEL BOLO!</h3>
+          <div class="relative overflow-hidden rounded-md shadow-lg">
+            <div class="slider flex transition-transform duration-500 ease-in-out">
+              <img src="/img/contacto/img1.jpg" alt="El rey del bolo" class="w-auto h-auto object-cover mx-auto" />
+              <img src="/img/contacto/nosotrossucre.jpg" alt="El rey del bolo sucre" class="w-auto h-auto object-cover mx-auto" />
+              <img src="/img/contacto/nosotrosvillamontes.jpg" alt="El rey del bolo villamontes" class="w-auto h-auto object-cover mx-auto" />
+              <img src="/img/contacto/nosotrosyacuiba.jpg" alt="El rey del bolo yacuiba" class="w-auto h-auto object-cover mx-auto" />
+            </div>
+          </div>
+          <div class="flex justify-center mt-4 space-x-2">
+            <button class="w-3 h-3 bg-green-700 rounded-full"></button>
+            <button class="w-3 h-3 bg-green-500 rounded-full"></button>
+            <button class="w-3 h-3 bg-green-500 rounded-full"></button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    // Manejo de formulario
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+      form.addEventListener("input", handleInputChange);
+      form.addEventListener("change", (event) => {
+        if (event.target instanceof HTMLInputElement && event.target.name === "attachment") {
+          handleFileChange(event);
+        }
+      });
+      form.addEventListener("submit", handleSubmit);
+    }
+
+    let formData = {
+      email: "",
+      firstName: "",
+      lastName: "",
+      city: "",
+      country: "",
+      subject: "",
+      message: "",
+      attachment: null,
+    };
+
+    function handleInputChange(event) {
+      const target = event.target;
+      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+        const { name, value } = target;
+        formData[name] = value;
+      }
+    }
+
+    function handleFileChange(event) {
+      const target = event.target;
+      if (target instanceof HTMLInputElement) {
+        const file = target.files?.[0] || null;
+        formData.attachment = file;
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      console.log("Datos del formulario:", formData);
+      alert("Mensaje enviado correctamente.");
+
+      // Vaciar el formulario manualmente
+      if (form) {
+        // Vaciar los campos de texto y área de texto
+        const inputs = form.querySelectorAll("input[type='text'], input[type='email'], textarea");
+        inputs.forEach(input => {
+          if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+            input.value = "";
+          }
+        });
+
+        // Vaciar los campos de archivo (solo se puede intentar limpiar el valor, pero no siempre tiene efecto)
+        const fileInputs = form.querySelectorAll("input[type='file']");
+        fileInputs.forEach(fileInput => {
+          if (fileInput instanceof HTMLInputElement) {
+            fileInput.value = ""; 
+          }
+        });
+
+        formData = {
+          email: "",
+          firstName: "",
+          lastName: "",
+          city: "",
+          country: "",
+          subject: "",
+          message: "",
+          attachment: null,
+        };
+      }
+    }
+
+    // Galería de imágenes dinámica
+    let currentIndex = 0;
+    const slider = document.querySelector(".slider");
+    const slides = document.querySelectorAll(".slider img");
+    const dots = document.querySelectorAll(".flex button");
+
+    if (slider) {
+      function showSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+
+        currentIndex = index;
+        const offset = -index * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar el estado de los botones
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add("bg-green-700");
+            dot.classList.remove("bg-green-500");
+          } else {
+            dot.classList.add("bg-green-500");
+            dot.classList.remove("bg-green-700");
+          }
+        });
+      }
+
+      showSlide(currentIndex);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showSlide(index);
+        });
+      });
+
+      setInterval(() => {
+        showSlide((currentIndex + 1) % slides.length);
+      }, 3000);
+    }
+  });
+</script>
