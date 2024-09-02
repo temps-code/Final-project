@@ -3,67 +3,69 @@ import ModalPrivacidad from "./ModalPrivacidad.astro"
 import ModalTerminos from "./ModalTerminos.astro"
 ---
 
-<footer class="bg-green-600 py-16">
+<footer class="bg-green-800 py-16">
     <div class="container mx-auto flex flex-col gap-16 px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-center">
         
         <div class="flex flex-col gap-8">
           <p class="font-semibold text-2xl uppercase text-white">Información de Contacto</p>
-          <ul class="space-y-4 text-white text-lg font-light">
+          <ul class="font-normal space-y-4 text-white text-lg font-light">
             <li>Dirección: Ejército entre Avaroa y Alejandro del Carpio, Ciudad Tarija, Bolivia</li>
             <li>Teléfono: 69306654</li>
             <li>Email: ElReyDelBolo@support.com</li>
           </ul>
-          <div class="flex gap-6">
-            <a href="https://www.facebook.com/reydelbolo" class="size-12 flex items-center justify-center rounded-full bg-[#3b5998] text-white">
+          <div class="flex flex-wrap gap-6 justify-center">
+            <a href="https://www.facebook.com/reydelbolo" class="flex items-center justify-center rounded-full bg-[#3b5998] text-white p-4">
               <i class="fa-brands fa-facebook-f text-xl"></i>
             </a>
-            <a href="#" class="size-12 flex items-center justify-center rounded-full bg-[#00acee] text-white">
+            <a href="#" class="flex items-center justify-center rounded-full bg-[#00acee] text-white p-4">
               <i class="fa-brands fa-twitter text-xl"></i>
             </a>
-            <a href="https://api.whatsapp.com/send/?phone=59164325119&text&type=phone_number&app_absent=0" class="size-12 flex items-center justify-center rounded-full bg-[#08b64b] text-white">
+            <a href="https://api.whatsapp.com/send/?phone=59164325119&text&type=phone_number&app_absent=0" class="flex items-center justify-center rounded-full bg-[#08b64b] text-white p-4">
               <i class="fa-brands fa-whatsapp text-xl"></i>
             </a>
-            <a href="#" class="size-12 flex items-center justify-center rounded-full bg-[#000000] text-white">
+            <a href="#" class="flex items-center justify-center rounded-full bg-[#000000] text-white p-4">
               <i class="fa-brands fa-tiktok text-xl"></i>
             </a>
-            <a href="https://www.instagram.com/rey_del_bolo?igshid=OGQ5ZDc2ODk2ZA%3D%3D" class="size-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#405de6] via-[#833ab4] via-[#fd1d1d] via-[#f56040] to-[#fcaf45] text-white">
-                <i class="fa-brands fa-instagram text-xl"></i>
-              </a>
+            <a href="https://www.instagram.com/rey_del_bolo?igshid=OGQ5ZDc2ODk2ZA%3D%3D" class="flex items-center justify-center rounded-full bg-gradient-to-r from-[#405de6] via-[#833ab4] via-[#fd1d1d] via-[#f56040] to-[#fcaf45] text-white p-4">
+              <i class="fa-brands fa-instagram text-xl"></i>
+            </a>
           </div>
+          
         </div>
   
         <div class="flex flex-col gap-8">
           <p class="font-semibold text-2xl uppercase text-white">Información</p>
           <ul class="space-y-4 text-white text-lg font-light">
-            <li><button class="open-modal-privacity-button hover:text-[#151515] bg-transparent border-none cursor-pointer text-white">Políticas de Privacidad</button></li>
-            <li><button class="open-modal-conditions-button hover:text-[#151515] bg-transparent border-none cursor-pointer text-white">Términos y Condiciones</button></li>
+            <li><button class="open-modal-privacity-button hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Políticas de Privacidad</button></li>
+            <li><button class="open-modal-conditions-button hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Términos y Condiciones</button></li>
           </ul>
         </div>
   
         <div class="flex flex-col gap-8">
           <p class="font-semibold text-2xl uppercase text-white">Métodos de Pago</p>
-          <div class="text-white text-lg font-light">
+          <div class="text-white text-lg font-light font-normal">
             <p>Ahora puedes pagar de las siguientes formas:</p>
-            <div class="flex gap-6 mt-4">
-              <span class="size-12 flex items-center justify-center rounded-full bg-white text-[#3b5998]">
+            <div class="flex flex-wrap justify-center gap-6 mt-4">
+              <span class="flex items-center justify-center rounded-full bg-white text-[#3b5998] p-3">
                 <i class="fa-brands fa-cc-visa text-xl"></i>
               </span>
-              <span class="size-12 flex items-center justify-center rounded-full bg-white text-red-600">
+              <span class="flex items-center justify-center rounded-full bg-white text-red-600 p-3">
                 <i class="fa-brands fa-cc-mastercard text-xl"></i>
               </span>
-              <span class="size-12 flex items-center justify-center rounded-full bg-white text-[#3b5998]">
+              <span class="flex items-center justify-center rounded-full bg-white text-[#3b5998] p-3">
                 <i class="fa-brands fa-paypal text-xl"></i>
               </span>
-              <span class="size-12 flex items-center justify-center rounded-full bg-white text-[#08b64b]">
+              <span class="flex items-center justify-center rounded-full bg-white text-[#08b64b] p-3">
                 <i class="fa-solid fa-money-bill text-xl"></i>
               </span>
             </div>
           </div>
         </div>
+        
   
       </div>
-      <div class="flex justify-center border-t border-[#d2b495] pt-8">
+      <div class="flex justify-center border-t border-green-100 pt-8">
         <p class="text-lg font-normal text-white">&copy;2023 El Rey Del Bolo</p>
       </div>
     </div>

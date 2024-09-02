@@ -1,0 +1,32 @@
+---
+const {product}=Astro.props;
+const {id,article,img,price}=product;
+let imageUrl = img;
+
+if (id === "enlace") {
+  imageUrl = "../../public/img/products/p_Chicle.png"; // prueba para probar como se ve con una imagen
+}
+---
+<div class="bg-white p-8 rounded-lg cursor-pointer shadow-md relative group">
+    <div class="relative">
+      <img src="../img/products/p_Chicle.png" alt={`Producto ${id}`} class="w-full max-h-[300px] object-cover">
+      <div class="absolute top-0 right-[-3rem] flex flex-col gap-4 transition-all duration-500 ease-in-out group-hover:right-[-1rem] z-[-1]">
+        <a href="#ModalZoom-acai" class="border border-dark-color text-dark-color text-2xl p-2 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out hover:bg-primary-color hover:text-white">
+          <i class="fa-regular fa-eye"></i>
+        </a>
+        <a class="border border-dark-color text-dark-color text-2xl p-2 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out hover:bg-primary-color hover:text-white">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+      </div>
+    </div>
+    <div class="grid justify-items-center grid-cols-2 gap-4 mt-4">
+      <h3 class="font-normal text-2xl cursor-pointer transition-colors duration-500 ease-in-out group-hover:text-primary-color">{article}</h3>
+      <span class="flex items-center justify-center border-2 border-primary-color h-16 p-4 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-primary-color">
+        <a href="" class="text-primary-color">
+          <i class="fa-solid fa-cart-shopping text-2xl"></i>
+        </a>
+      </span>
+      <p class="text-xl font-semibold self-center text-right">{`${price} Bs.`}</p>
+    </div>
+  </div>
+  
