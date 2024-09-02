@@ -43,7 +43,7 @@ const users = await response.json();
 			
 			if (user) {
 				// Credenciales correctas, redirigir a panel.astro
-				window.location.href = './panel';
+				window.location.href = '../admin/panel';
 			} else {
 				// Credenciales incorrectas, mostrar mensaje de error
 				errorMessage.textContent = 'Usuario o contraseña incorrectos';
