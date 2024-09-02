@@ -42,6 +42,9 @@ const users = await response.json();
 			const user = users.find(u => u.username === username && u.password === password);
 			
 			if (user) {
+				const userString = JSON.stringify(user);
+  				// Guardar o sobrescribir el elemento sessionUser en localStorage
+  				localStorage.setItem('sessionUser', userString);
 				// Credenciales correctas, redirigir a panel.astro
 				window.location.href = '../admin/panel';
 			} else {
