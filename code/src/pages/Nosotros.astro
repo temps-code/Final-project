@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Nosotros">
+  <main class="bg-[#C2FFA8] py-12">
+    <!-- Sección Acerca de Nosotros -->
+    <section class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center gap-8">
+        <div class="flex-1">
+          <h2 class="text-4xl font-bold mb-4 text-gray-800">Acerca de Nosotros</h2>
+          <p class="mb-4 text-gray-700">El Rey Del Bolo es una tienda de coca machucada ubicada en Tarija, Bolivia, que ofrece una amplia variedad de sabores para que armes el mejor bolo. Nuestra pasión por la coca nos llevó a empezar este negocio y machucar la mejor coca para Tarija.</p>
+          <p class="mb-4 text-gray-700">En El Rey Del Bolo, nos esforzamos por ofrecer la mejor experiencia de bolo posible a nuestros clientes. Utilizamos coca de la mejor calidad, y preparamos cada machucada con cuidado y atención.</p>
+          <p class="mb-4 text-gray-700">Nuestra variedad de sabores incluye opciones para todos los gustos. Ofrecemos sabores únicos, cocas de coco, banana, chicle, red bull y mucho más. También ofrecemos una variedad de cigarros para acompañar un buen bolo.</p>
+          <p class="text-gray-700">Si eres un amante del bolo, no te pierdas El Rey Del Bolo. Ven a disfrutar de las mejores cocas machucadas.</p>
+        </div>
+        <img src="/img/nosotros1.jpg" alt="Imagen" class="w-full lg:w-1/2 h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
+      </div>
+    </section>
+
+     <!-- Sección La Tienda  -->
+    <section class="py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h2 id="store-title" class="text-4xl font-bold mb-4 text-gray-800">La Tienda en Tarija</h2>
+        <div class="flex justify-center gap-4 mb-8">
+          <button onclick="changeStore('Tarija', '/img/nosotros.jpg')" class="bg-[#4E9144] text-white py-2 px-4 rounded">Tienda Principal en Tarija</button>
+          <button onclick="changeStore('Villamontes', '/img/nosotrosvillamontes.jpg')" class="bg-[#4E9144] text-white py-2 px-4 rounded">Sucursal en Villamontes</button>
+          <button onclick="changeStore('Sucre', '/img/nosotrossucre.jpg')" class="bg-[#4E9144] text-white py-2 px-4 rounded">Sucursal en Sucre</button>
+          <button onclick="changeStore('Yacuiba', '/img/nosotrosyacuiba.jpg')" class="bg-[#4E9144] text-white py-2 px-4 rounded">Sucursal en Yacuiba</button>
+        </div>
+        <img id="store-image" src="/img/nosotros.jpg" alt="Tienda en Tarija" class="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
+      </div>
+    </section>
+
+    <!-- Sección Ubicación -->
+    <section class="py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-4 text-gray-800">Ubicación</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1103.3484032987863!2d-64.72760163335067!3d-21.538764999198055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x940647fb44491ff1%3A0xc07a7d39de5e3071!2sEjercito%2C%20Tarija!5e0!3m2!1ses-419!2sbo!4v1700300104573!5m2!1ses-419!2sbo" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline>
+    function changeStore(city, imageUrl) {
+      document.getElementById('store-title').textContent = `Sucursal en ${city}`;
+      
+      document.getElementById('store-image').src = imageUrl;
+    }
+  </script>
+</Layout>
