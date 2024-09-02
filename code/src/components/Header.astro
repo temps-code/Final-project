@@ -1,45 +1,59 @@
 <header>
-    <div class="bg-white">
-      <div class="flex justify-between items-center py-4" >
-        <div class="flex items-center gap-2 ml-4">
-          <i class="fa-solid fa-headset text-3xl"></i>
-          <div class="flex flex-col">
-            <span class="text-sm text-gray-900">Soporte al cliente</span>
-            <span class="text-sm text-gray-900">64325119</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-            <a href="http://localhost:4321" class="no-underline"><img src="../img/logo1.png" alt="logo" class="w-24 h-20"></a>
-          <h1 class="text-center text-2xl uppercase font-bold text-gray-900">
-            <a href="http://localhost:4321" class="no-underline">EL REY DEL BOLO!</a>
-          </h1>
-        </div>
-        <div class="flex items-center gap-2 cursor-pointer">
-          <a href="img/logo1.png" class="text-black text-3xl pr-2 border-r border-gray-300">
-            <i class="fa-solid fa-cart-shopping"></i>
-          </a>
-          <div class="max-w-36 min-w-28 h-16 bg-green-600 text-white flex items-center justify-center mr-2">
-            <p class="text-center">CARRITO DE COMPRAS</p>
-          </div>
-        </div>
+  <div class="bg-white flex justify-between items-center md:py-12 py-8 px-4 md:px-8">
+    <!-- Soporte al cliente - Solo visible en pantallas medianas y grandes -->
+    <div class="hidden md:flex items-center gap-2">
+      <i class="fa-solid fa-headset text-2xl md:text-3xl"></i>
+      <div class="flex flex-col">
+        <span class="text-xs md:text-sm text-gray-900">Soporte al cliente</span>
+        <span class="text-xs md:text-sm text-gray-900">64325119</span>
       </div>
     </div>
-    <nav class="bg-green-600 shadow-md">
-      <div class="flex justify-between items-center py-4 px-8">
-        <ul class="flex gap-6">
-          <li><a href="http://localhost:4321" class="text-gray-800 hover:text-black">INICIO</a></li>
-          <li><a href="/Nosotros" class="text-gray-800 hover:text-black">NOSOTROS</a></li>
-          <li><a href="" class="text-gray-800 hover:text-black">TIENDA</a></li>
-          <li><a href="" class="text-gray-800 hover:text-black">CONTACTO</a></li>
-        </ul>
-        <form class="ml-8 flex items-center border-2 border-white rounded-3xl w-full max-w-[300px]">
-            <input type="search" placeholder="Buscar.." class="pl-6 text-left rounded-l-3xl py-1 w-full">
-            <button class="bg-green-600 text-white p-1 rounded-r-3xl hover:bg-green-500">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
-          
+
+    <!-- Logo centrado en todas las vistas -->
+    <div class="absolute left-1/2 transform -translate-x-1/2">
+      <a href="http://localhost:4321" class="no-underline">
+        <img src="../img/logo/logo1.png" alt="logo" class="max-w-20 w-fit h-auto md:max-w-28">
+      </a>
+    </div>
+
+    <!-- Carrito de Compras -->
+    <div class="flex items-center gap-2 cursor-pointer">
+      <a href="http://localhost:4321" class="text-black text-2xl md:text-3xl pr-2 md:border-r border-gray-300">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+      <!-- Cuadro de texto - Solo visible en pantallas medianas y grandes -->
+      <div class="hidden md:max-w-36 md:min-w-10 md:max-h-16 md:min-h-10 md:flex bg-green-800 text-white items-center justify-center px-3 py-2 text-xs md:text-sm hover:bg-green-500">
+        <p class="text-center">CARRITO DE COMPRAS</p>
       </div>
-    </nav>
-  </header>
-  
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-green-800 shadow-md">
+    <div class="flex justify-between items-center py-4 px-4 md:px-8">
+      <ul class="flex flex-wrap gap-4 md:gap-6 justify-center">
+        <li class="font-bold text-xs md:text-xl flex-shrink-0">
+          <a href="http://localhost:4321" class="text-white hover:text-gray-200">INICIO</a>
+        </li>
+        <li class="font-bold text-xs md:text-xl flex-shrink-0">
+          <a href="/Nosotros" class="text-white hover:text-gray-200">NOSOTROS</a>
+        </li>
+        <li class="font-bold text-xs md:text-xl flex-shrink-0">
+          <a href="" class="text-white hover:text-gray-200">TIENDA</a>
+        </li>
+        <li class="font-bold text-xs md:text-xl flex-shrink-0">
+          <a href="" class="text-white hover:text-gray-200">CONTACTO</a>
+        </li>
+      </ul>
+      
+
+      <!-- Search Form - Mantener oculto en pantallas pequeñas -->
+      <form class="relative hidden md:flex items-center border-2 border-white rounded-3xl w-full max-w-[300px] transition-all duration-300 ease-in-out focus-within:w-[80%] focus-within:ml-0 focus-within:z-50">
+        <input type="search" placeholder="Buscar.." class="pl-6 text-left rounded-l-3xl py-1 w-full">
+        <button class="bg-green-800 text-white p-1 rounded-r-3xl hover:bg-green-500">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+  </nav>
+</header>
