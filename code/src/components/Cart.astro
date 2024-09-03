@@ -1,0 +1,54 @@
+---
+
+---
+
+<div
+  id="jsModalCarrito"
+  class="fixed top-0 right-0 bg-green-100 w-[350px] h-screen transform translate-x-full transition-transform duration-300 ease-in z-[20000] hidden"
+>
+  <div class="h-full p-8 relative z-20">
+
+    <div class="flex flex-col h-full overflow-hidden">
+      <div class="pb-8 mb-8 border-b border-gray-500">
+        <h2 class="text-2xl text-green-800 font-semibold">
+          <i class="fa-solid fa-cart-shopping text-black text-2xl md:text-3xl pr-2 md:border-r border-gray-300"></i>  Carrito
+        </h2>
+      </div>
+
+      <div
+        class="relative overflow-x-hidden overflow-y-visible w-full flex-grow"
+      >
+        <!-- Contenedor para los elementos del carrito -->
+        <div id="cartItems" class="space-y-5"></div>
+      </div>
+
+      <div class="pt-8 mt-8 border-t border-gray-500">
+        <div class="space-y-2">
+          <ul>
+            <li>Subtotal: <strong class="text-green-800">$0.00</strong></li>
+            <li>Descuento: <strong class="text-green-800">$0.00</strong></li>
+          </ul>
+          <h4 class="text-lg text-green-800 my-5">Total: $0.00</h4>
+        </div>
+
+        <div class="pt-8 border-t border-gray-500 space-y-4">
+          <a
+            href=""
+            class="btn-border w-full h-12 flex items-center justify-center rounded-full text-sm font-semibold uppercase border-2 border-gray-500 text-gray-500"
+            >Ir al carrito</a
+          >
+          <a
+            href=""
+            class="btn-primary w-full h-12 flex items-center justify-center rounded-full text-sm font-semibold uppercase bg-blue-600 text-white"
+            >Comprar Ahora</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fixed top-0 right-0 w-screen h-screen bg-black/40 opacity-0 pointer-events-none z-[999]"
+  ></div>
+</div>
+
+

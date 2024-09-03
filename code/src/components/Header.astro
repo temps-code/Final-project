@@ -1,5 +1,10 @@
+---
+import Cart from "./Cart.astro"
+---
 <header>
-  <div class="bg-green-100 flex justify-between items-center md:py-12 py-8 px-4 md:px-8">
+  <div
+    class="bg-green-100 flex justify-between items-center md:py-12 py-8 px-4 md:px-8"
+  >
     <!-- Soporte al cliente - Solo visible en pantallas medianas y grandes -->
     <div class="hidden md:flex items-center gap-2">
       <i class="fa-solid fa-headset text-2xl md:text-3xl"></i>
@@ -9,26 +14,36 @@
       </div>
     </div>
 
- <!-- Logo centrado en todas las vistas -->
+    <!-- Logo centrado en todas las vistas -->
     <div class="absolute left-1/2 transform -translate-x-1/2 text-center">
       <a href="./" class="no-underline">
-        <img src="../img/logo/logo1.png" alt="logo" class="mx-auto max-w-20 w-fit h-auto md:max-w-28">
-        <h1 class="hidden md:block text-2xl uppercase font-bold text-gray-900 mt-2">
+        <img
+          src="../img/logo/logo1.png"
+          alt="logo"
+          class="mx-auto max-w-20 w-fit h-auto md:max-w-28"
+        />
+        <h1
+          class="hidden md:block text-2xl uppercase font-bold text-gray-900 mt-2"
+        >
           EL REY DEL BOLO!
         </h1>
       </a>
     </div>
-    
 
-    <!-- Carrito de Compras -->
-    <div class="flex items-center gap-2 cursor-pointer">
-      <a href="./" class="text-black text-2xl md:text-3xl pr-2 md:border-r border-gray-300">
+    <div id="cartHoverArea" class="flex items-center gap-2 cursor-pointer">
+      <a
+        href="./"
+        class="text-black text-2xl md:text-3xl pr-2 md:border-r border-gray-300"
+      >
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
-      <!-- Cuadro de texto - Solo visible en pantallas medianas y grandes -->
-      <div class="hidden md:max-w-36 md:min-w-10 md:max-h-16 md:min-h-10 md:flex bg-green-800 text-white items-center justify-center px-3 py-2 text-xs md:text-sm hover:bg-green-500">
-        <p class="text-center">CARRITO DE COMPRAS</p>
-      </div>
+      <a href="./">
+        <div
+          class="hidden md:max-w-36 md:min-w-10 md:max-h-16 md:min-h-10 md:flex bg-green-800 text-white items-center justify-center px-3 py-2 text-xs md:text-sm hover:bg-green-500"
+        >
+          <p class="text-center">CARRITO DE COMPRAS</p>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -40,24 +55,187 @@
           <a href="./" class="text-white hover:text-gray-200">INICIO</a>
         </li>
         <li class="font-bold text-xs md:text-xl flex-shrink-0">
-          <a href="/Nosotros" class="text-white hover:text-gray-200">NOSOTROS</a>
+          <a href="/Nosotros" class="text-white hover:text-gray-200">NOSOTROS</a
+          >
         </li>
         <li class="font-bold text-xs md:text-xl flex-shrink-0">
           <a href="./" class="text-white hover:text-gray-200">TIENDA</a>
         </li>
         <li class="font-bold text-xs md:text-xl flex-shrink-0">
-          <a href="/Contacto" class="text-white hover:text-gray-200">CONTACTO</a>
+          <a href="/Contacto" class="text-white hover:text-gray-200">CONTACTO</a
+          >
         </li>
       </ul>
-      
 
       <!-- Search Form - Mantener oculto en pantallas pequeñas -->
-      <form class="relative hidden md:flex items-center border-2 border-white rounded-3xl w-full max-w-[300px] transition-all duration-300 ease-in-out focus-within:w-[80%] focus-within:ml-0 focus-within:z-50">
-        <input type="search" placeholder="Buscar.." class="pl-6 text-left rounded-l-3xl py-1 w-full">
-        <button class="bg-green-800 text-white p-1 rounded-r-3xl hover:bg-green-500">
+      <form
+        class="relative hidden md:flex items-center border-2 border-white rounded-3xl w-full max-w-[300px] transition-all duration-300 ease-in-out focus-within:w-[80%] focus-within:ml-0 focus-within:z-50"
+      >
+        <input
+          type="search"
+          placeholder="Buscar.."
+          class="pl-6 text-left rounded-l-3xl py-1 w-full"
+        />
+        <button
+          class="bg-green-800 text-white p-1 rounded-r-3xl hover:bg-green-500"
+        >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
     </div>
   </nav>
+
 </header>
+<Cart/>
+<script>
+  // Definir la interfaz para los items del carrito
+  interface CartItem {
+    id: string;            // Añadir 'id' para identificar de manera única cada ítem
+    description: string;   // Aquí asumimos que 'name' es equivalente a 'article'
+    price: number;         // Cambia a 'number' si prefieres trabajar con números
+    quantity: number;
+    imageUrl: string;      // Agrega 'imageUrl' para la URL de la imagen
+  }
+
+  // Inicializar el carrito en localStorage si no está presente
+  if (!localStorage.getItem("cart")) {
+    localStorage.setItem("cart", JSON.stringify([])); // Inicializa el carrito como un array vacío
+  }
+
+  // Función para agregar un item al carrito en localStorage
+  function addToCart(event: MouseEvent) {
+    // Evitar múltiples ejecuciones si se llama el mismo evento varias veces
+    event.stopPropagation();
+
+    // Obtener el contenedor del producto
+    const target = event.currentTarget as HTMLElement | null;
+    
+    if (!target) {
+      console.error('Target no está definido.');
+      return;
+    }
+
+    const productDiv = target.closest('[data-id]') as HTMLElement | null;
+
+    if (!productDiv) {
+      console.error('No se pudo encontrar el contenedor del producto.');
+      return;
+    }
+
+    // Extraer los datos del contenedor
+    const id = productDiv.getAttribute('data-id') || '';
+    const description = productDiv.getAttribute('data-description') || '';
+    const imageUrl = productDiv.getAttribute('data-image-url') || '';
+    const price = parseFloat(productDiv.getAttribute('data-price') || '0');
+
+    // Recuperar los datos actuales del localStorage
+    let cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    // Verificar si el item ya está en el carrito
+    const existingItemIndex = cart.findIndex((cartItem) => cartItem.id === id);
+    if (existingItemIndex > -1) {
+      // Si el ítem ya existe, actualizar la cantidad
+      cart[existingItemIndex].quantity += 1;
+    } else {
+      // Si el ítem no existe, agregar el nuevo item a la lista del carrito con cantidad inicial de 1
+      const item: CartItem = { id, description, imageUrl, price, quantity: 1 };
+      cart.push(item);
+    }
+
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Llamar a la función para actualizar la visualización del carrito
+    displayCartItems();
+
+    console.log("Item added to cart:", { id, description, imageUrl, price, quantity: 1 }); // Solo para verificación
+  }
+
+  // Función para mostrar los elementos del carrito en el contenedor
+  function displayCartItems() {
+    const cartItemsString = localStorage.getItem("cart");
+    // Asegúrate de que cartItemsString no sea null antes de parsear
+    const cartItems: CartItem[] = cartItemsString ? JSON.parse(cartItemsString) : [];
+    const cartContainer = document.getElementById('cartItems');
+
+    // Verifica que cartContainer no sea null antes de manipularlo
+    if (cartContainer) {
+      // Limpiar el contenedor antes de agregar nuevos elementos
+      cartContainer.innerHTML = '';
+
+      // Agregar cada item del carrito al contenedor
+      cartItems.forEach((item: CartItem) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('flex', 'items-center', 'mt-5', 'first:mt-0');
+
+        itemElement.innerHTML = `
+          <div class="w-20 h-auto">
+            <img src="${item.imageUrl}" alt="${item.description}">
+          </div>
+          <div class="w-[calc(100%-80px)] pl-5">
+            <p>${item.description}</p>
+            <p>Cantidad: ${item.quantity}</p>
+            <p class="mt-1 text-green-800 font-bold">${item.price} Bs.</p>
+          </div>
+        `;
+        cartContainer.appendChild(itemElement);
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Llamar a la función para mostrar los elementos del carrito al cargar la página
+    displayCartItems();
+
+    // Asegurarse de que solo se agregue un manejador de eventos por ítem
+    const cartIcons = document.querySelectorAll('[id^="cart-icon-"]');
+
+    cartIcons.forEach(icon => {
+      // Primero, eliminamos cualquier manejador de eventos previo para evitar múltiples llamadas
+      icon.removeEventListener('click', addToCart as EventListener);
+      // Luego, agregamos el manejador de eventos
+      icon.addEventListener('click', addToCart as EventListener);
+    });
+
+    // Manejo del modal del carrito
+    const cartHoverArea = document.getElementById('cartHoverArea');
+    const cartModal = document.getElementById('jsModalCarrito');
+
+    if (cartHoverArea && cartModal) {
+      let timeoutId: any;
+
+      const showModal = () => {
+        cartModal.classList.remove('hidden');
+        setTimeout(() => {
+          cartModal.style.opacity = '1';
+          cartModal.style.transform = 'translateX(0)';
+        }, 10);
+      };
+
+      const hideModal = () => {
+        cartModal.style.opacity = '0';
+        cartModal.style.transform = 'translateX(100%)';
+        timeoutId = setTimeout(() => {
+          cartModal.classList.add('hidden');
+        }, 300); // Corresponde a la duración de la animación
+      };
+
+      cartHoverArea.addEventListener('mouseenter', showModal);
+      cartModal.addEventListener('mouseenter', showModal);
+      
+      cartHoverArea.addEventListener('mouseleave', () => {
+        // Si el mouse sale del área del carrito, inicia el temporizador para ocultar el modal
+        timeoutId = setTimeout(hideModal, 300); // Espera 300ms para que el usuario pueda mover el mouse al modal
+      });
+
+      cartModal.addEventListener('mouseleave', () => {
+        // Si el mouse sale del modal, inicia el temporizador para ocultar el modal
+        timeoutId = setTimeout(hideModal, 300); // Espera 300ms para que el usuario pueda mover el mouse al área del carrito
+      });
+
+      // Limpiar el temporizador si el mouse entra nuevamente antes de que el modal se oculte
+      cartHoverArea.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+      cartModal.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+    }
+  });
+</script>
