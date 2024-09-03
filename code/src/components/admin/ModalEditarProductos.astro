@@ -1,0 +1,40 @@
+---
+
+---
+<div id="productModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+  <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+    <h3 id="modalTitle" class="text-lg font-bold mb-4">Añadir Producto</h3>
+    <form id="productForm">
+      <input type="hidden" id="productId">
+      <div class="mb-4">
+        <label for="articleInput" class="block text-gray-700 text-sm font-bold mb-2">Artículo</label>
+        <input type="text" id="articleInput"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required>
+      </div>
+      <div class="mb-4">
+        <label for="descriptionInput" class="block text-gray-700 text-sm font-bold mb-2">Descripción</label>
+        <input type="text" id="descriptionInput"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required>
+      </div>
+      <div class="mb-4">
+        <label for="priceInput" class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
+        <input type="number" id="priceInput" step="0.01"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Guardar
+        </button>
+        <button type="button" id="cancelBtn"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
