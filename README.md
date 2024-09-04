@@ -69,6 +69,7 @@ Queremos asegurarnos de que nuestra tienda virtual cumpla con tus necesidades. P
 [![Formulario](https://img.shields.io/badge/Formulario-Completar-brightgreen?style=for-the-badge&logo=google&logoColor=white)](https://forms.gle/Kg66GUjD24Cvu7zU9)
 
 </div>
+
 Gracias a todos los que participaron en la validación del alpha de nuestro proyecto presentado en la Feria de Tecnología de Fin de Materia. Aquí te mostramos las estadísticas de validación recopiladas:
 
 <div align="center">
@@ -76,4 +77,3 @@ Gracias a todos los que participaron en la validación del alpha de nuestro proy
 [![Estadísticas de Validación](https://img.shields.io/badge/Estadísticas%20-Ver%20Resultados-brightgreen?style=for-the-badge&logo=google&logoColor=white)](https://docs.google.com/forms/d/1rUMQzmofySRyDQ0ZRwMe6jYA4z0z0UOaPp2drheUlNA/viewanalytics)
 
 </div>
-
