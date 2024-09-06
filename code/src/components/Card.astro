@@ -1,26 +1,20 @@
 ---
+import Photo from "./base/Photo.astro";
+
 const { product } = Astro.props;
 const { id, article,description, img, price } = product;
-let imageUrl = img;
 
-if (img === "enlace") {
-  imageUrl = "../public/img/products/p_Chicle.png"; // prueba para probar como se ve con una imagen
-}
 ---
 
 <div
   class="bg-white p-8 rounded-lg cursor-pointer shadow-md relative group"
   data-id={id}
   data-description={description}
-  data-image-url="../public/img/products/p_Chicle.png"
+  data-image-url={img}
   data-price={price}
 >
   <div class="relative flex justify-center items-center">
-    <img
-      src="../img/products/p_Chicle.png"      
-      alt={article}
-      class="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110"
-    />
+    <Photo src={`${img}`} title={article} clases="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110" />
     <div
       class="absolute top-4 right-[-3rem] flex flex-col gap-4 opacity-0 transition-all duration-500 ease-in-out group-hover:right-4 group-hover:opacity-100 z-10"
     >

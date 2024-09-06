@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Photo from "../components/base/Photo.astro";
 ---
 
 <Layout title="Contacto">
@@ -99,13 +100,10 @@ import Layout from "../layouts/Layout.astro";
           <h3 class="text-2xl font-bold text-green-800 mb-6">¡EL REY DEL BOLO!</h3>
           <div class="relative overflow-hidden rounded-md shadow-lg">
             <div class="slider flex transition-transform duration-500 ease-in-out">
-              <img src="/img/nosotros/img1.jpg" alt="El rey del bolo" class="w-auto h-auto object-cover mx-auto" />
-              <img src="/img/nosotros/nosotrossucre.jpg" alt="El rey del bolo sucre"
-                class="w-auto h-auto object-cover mx-auto" />
-              <img src="/img/nosotros/nosotrosvillamontes.jpg" alt="El rey del bolo villamontes"
-                class="w-auto h-auto object-cover mx-auto" />
-              <img src="/img/nosotros/nosotrosyacuiba.jpg" alt="El rey del bolo yacuiba"
-                class="w-auto h-auto object-cover mx-auto" />
+              <Photo src="/src/assets/img1.jpg" title="El rey del bolo" clases="w-auto h-auto object-cover mx-auto" />
+              <Photo src="/src/assets/nosotrossucre.jpg" title="El rey del bolo sucre" clases="w-auto h-auto object-cover mx-auto" />
+              <Photo src="/src/assets/nosotrosvillamontes.jpg" title="El rey del bolo villamontes" clases="w-auto h-auto object-cover mx-auto" />
+              <Photo src="/src/assets/nosotrosyacuiba.jpg" title="El rey del bolo yacuiba" clases="w-auto h-auto object-cover mx-auto" />
             </div>
           </div>
           <div class="flex justify-center mt-4 space-x-2">
