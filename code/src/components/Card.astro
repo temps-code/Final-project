@@ -14,7 +14,7 @@ const { id, article,description, img, price } = product;
   data-price={price}
 >
   <div class="relative flex justify-center items-center">
-    <Photo src={`${img}`} title={article} clases="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110" />
+    <img src={`${img}`} title={article} class="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110" />
     <div
       class="absolute top-4 right-[-3rem] flex flex-col gap-4 opacity-0 transition-all duration-500 ease-in-out group-hover:right-4 group-hover:opacity-100 z-10"
     >
