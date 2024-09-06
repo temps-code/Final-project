@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Photo from '../components/base/Photo.astro';
 ---
 
 <Layout title="Nosotros">
@@ -14,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="mb-4 text-gray-700">Nuestra variedad de sabores incluye opciones para todos los gustos. Ofrecemos sabores únicos, cocas de coco, banana, chicle, red bull y mucho más. También ofrecemos una variedad de cigarros para acompañar un buen bolo.</p>
           <p class="text-gray-700">Si eres un amante del bolo, no te pierdas El Rey Del Bolo. Ven a disfrutar de las mejores cocas machucadas.</p>
         </div>
-        <img src="/img/nosotros/nosotros1.jpg" alt="Imagen" class="w-full lg:w-1/2 h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
+        <Photo src="/src/assets/nosotros1.jpg" title="Imagen" clases="w-full lg:w-1/2 h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
       </div>
     </section>
 
@@ -23,21 +24,20 @@ import Layout from '../layouts/Layout.astro';
       <div class="container mx-auto px-4 text-center">
         <h2 id="store-title" class="text-4xl font-bold mb-4 text-gray-800">La Tienda en Tarija</h2>
         <div class="flex flex-wrap justify-center gap-4 mb-8 max-w-[720px] mx-auto">
-          <button onclick="changeStore('Tarija', '/img/nosotros/nosotros.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
+          <button onclick="changeStore('Tarija', '/src/assets/nosotros.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
             Tienda Principal en Tarija
           </button>
-          <button onclick="changeStore('Villamontes', '/img/nosotros/nosotrosvillamontes.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
+          <button onclick="changeStore('Villamontes', '/src/assets/nosotrosvillamontes.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
             Sucursal en Villamontes
           </button>
-          <button onclick="changeStore('Sucre', '/img/nosotros/nosotrossucre.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
+          <button onclick="changeStore('Sucre', '/src/assets/nosotrossucre.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
             Sucursal en Sucre
           </button>
-          <button onclick="changeStore('Yacuiba', '/img/nosotros/nosotrosyacuiba.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
+          <button onclick="changeStore('Yacuiba', '/src/assets/nosotrosyacuiba.jpg')" class="bg-green-800 text-white py-2 px-4 rounded w-full md:w-auto">
             Sucursal en Yacuiba
           </button>
         </div>
-        
-        <img id="store-image" src="/img/nosotros/nosotros.jpg" alt="Tienda en Tarija" class="flex mx-auto max-w-full lg:max-w-[70vw] h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
+        <Photo id="store-image" src="/src/assets/nosotros.jpg" title="Tienda en Tarija" clases="flex mx-auto max-w-full lg:max-w-[70vw] h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
       </div>
     </section>
 

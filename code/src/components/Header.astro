@@ -1,5 +1,6 @@
 ---
 import Cart from "./Cart.astro"
+import Photo from "./base/Photo.astro"
 ---
 <header>
   <div
@@ -17,11 +18,7 @@ import Cart from "./Cart.astro"
     <!-- Logo centrado en todas las vistas -->
     <div class="absolute left-1/2 transform -translate-x-1/2 text-center">
       <a href="./" class="no-underline">
-        <img
-          src="../img/logo/logo1.png"
-          alt="logo"
-          class="mx-auto max-w-20 w-fit h-auto md:max-w-28"
-        />
+        <Photo src="/src/assets/logo1.png" title="logo" clases="mx-auto max-w-20 w-fit h-auto md:max-w-28" />
         <h1
           class="hidden md:block text-2xl uppercase font-bold text-gray-900 mt-2"
         >

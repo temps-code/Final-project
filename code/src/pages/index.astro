@@ -2,6 +2,8 @@
 // Importar los componentes necesarios
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import SectionInfo from '../components/SectionInfo.astro';
+import Banner from '../components/Banner.astro';
 
 // Obtener los datos de la API
 let data = [];
@@ -21,29 +23,9 @@ console.error('Error fetching or parsing data:', error);
 ---
 
 <Layout title="Index">
-	<section class="py-12 bg-green-100">
-		<div class="container mx-auto px-4 text-center">
-			<img id="store-image" src="/img/banner/banner-1.png" alt="Tienda en Tarija"
-				class="flex mx-auto max-w-full lg:max-w-[100vw] h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105" />
-		</div>
-	</section>
 	<main class="bg-green-100">
-		<section class="grid grid-cols-1 md:grid-cols-2 gap-12 py-12 ml-8 mr-8">
-			<div class="flex flex-col md:flex-row items-center justify-center gap-6 bg-white rounded-xl p-6">
-				<i class="fa-solid fa-truck text-[2.7rem] text-[#7cc77a]"></i>
-				<div class="flex flex-col gap-2 text-center md:text-left">
-					<span>Envíos gratis para toda Tarija!</span>
-					<p>Por compras mayores a 100bs</p>
-				</div>
-			</div>
-			<div class="flex flex-col md:flex-row items-center justify-center gap-6 bg-white rounded-xl p-6">
-				<i class="fa-solid fa-headset text-[2.7rem] text-[#7cc77a]"></i>
-				<div class="flex flex-col gap-2 text-center md:text-left">
-					<span>Servicio al cliente personalizado.</span>
-					<p>Llámanos al 69306654</p>
-				</div>
-			</div>
-		</section>
+		<Banner/>
+		<SectionInfo/>
 		<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 py-12 mx-8">
 			{
 			data.map((product: any) => (
