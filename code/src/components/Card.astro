@@ -4,13 +4,15 @@ import Photo from "./base/Photo.astro";
 const { product } = Astro.props;
 const { id, article,description, img, price } = product;
 
+const imgUrl = new URL(img, import.meta.url).href;
+
 ---
 
 <div
   class="bg-white p-8 rounded-lg cursor-pointer shadow-md relative group"
   data-id={id}
   data-description={description}
-  data-image-url={img}
+  data-image-url={imgUrl}
   data-price={price}
 >
   <div class="relative flex justify-center items-center">
@@ -52,4 +54,3 @@ const { id, article,description, img, price } = product;
     {description}
   </h3>
 </div>
-
