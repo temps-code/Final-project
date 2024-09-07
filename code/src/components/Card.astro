@@ -1,9 +1,9 @@
 ---
 import Photo from "./base/Photo.astro";
+import Modal from "./base/Modal.astro";
 
 const { product } = Astro.props;
-const { id, article,description, img, price } = product;
-
+const { id, article, description, img, price } = product;
 ---
 
 <div
@@ -14,17 +14,21 @@ const { id, article,description, img, price } = product;
   data-price={price}
 >
   <div class="relative flex justify-center items-center">
-    <Photo src={`${img}`} title={article} clases="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110" />
+    <Photo
+      src={`${img}`}
+      title={article}
+      clases="md:max-w-[300px] w-full max-h-[400px] object-cover transform transition-transform duration-500 hover:scale-110"
+    />
     <div
       class="absolute top-4 right-[-3rem] flex flex-col gap-4 opacity-0 transition-all duration-500 ease-in-out group-hover:right-4 group-hover:opacity-100 z-10"
     >
-      <span
-        class="flex items-center justify-center border border-green-500 h-12 w-12 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
-      >
-        <a href="#">
+      <button class={`open-modal-${id}`}>
+        <span
+          class="flex items-center justify-center border border-green-500 h-12 w-12 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
+        >
           <i class="fa-regular fa-eye text-xl"></i>
-        </a>
-      </span>
+        </span>
+      </button>
       <span
         class="flex items-center justify-center border border-green-500 h-12 w-12 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
       >
@@ -36,13 +40,13 @@ const { id, article,description, img, price } = product;
   </div>
   <div class="flex justify-between items-center mt-4">
     <span
-    class="flex items-center justify-center border-2 border-green-500 h-16 p-4 rounded-full cursor-pointer text-green-500 transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
-    id={`cart-icon-${id}`}
-  >
-    <a>
-      <i class="fa-solid fa-cart-shopping text-2xl"></i>
-    </a>
-  </span>
+      class="flex items-center justify-center border-2 border-green-500 h-16 p-4 rounded-full cursor-pointer text-green-500 transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
+      id={`cart-icon-${id}`}
+    >
+      <a>
+        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+      </a>
+    </span>
 
     <p class="text-xl font-semibold text-right">{`${price} Bs.`}</p>
   </div>
@@ -52,4 +56,26 @@ const { id, article,description, img, price } = product;
     {description}
   </h3>
 </div>
+<Modal id_Modal={`modal-${id}`} id_Button={`button-${id}`}>
+  <Photo src={`${img}`} title={article} clases="max-w-[90vw] max-h-[75vh]" />
+</Modal>
 
+<script define:vars={{ id }}>
+  // Function to open the modal
+  const handleOpenModal = (modalId) => {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove("hidden");
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Add event listener to button to open the modal
+    const modalButton = document.querySelector(`.open-modal-${id}`);
+    if (modalButton) {
+      modalButton.addEventListener("click", () =>
+        handleOpenModal(`modal-${id}`)
+      );
+    }
+  });
+</script>

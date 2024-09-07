@@ -11,10 +11,18 @@ interface Props {
 
 const { src, title, clases, id } = Astro.props;
 
+// Ajusta el patrón para incluir archivos .webp
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpeg,jpg,png,gif}",
+  "/src/assets/*.{jpeg,jpg,png,gif,webp}"
 );
-if (!images[src]) throw new Error(`${src} does not exist in glob: 'src/assets/*.{jpeg,jpg,png,gif}'`);
+
+if (!images[src] && !src.startsWith('http')) {
+  throw new Error(`${src} does not exist in glob: 'src/assets/*.{jpeg,jpg,png,gif,webp}'`);
+}
 ---
 
-<Image id={id} src={images[src]()} alt={title} class={` ${clases || ''}`} /> 
+{src.startsWith('http') ? (
+  <img id={id} src={src} alt={title} class={` ${clases || ''}`} />
+) : (
+  <Image id={id} src={images[src]()} alt={title} class={` ${clases || ''}`} />
+)}

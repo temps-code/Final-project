@@ -9,7 +9,7 @@ import Banner from '../components/Banner.astro';
 let data = [];
 
 try {
-const response = await fetch('https://apimocha.com/reydelbolo/articles');
+const response = await fetch('https://apimocha.com/el_rey_del_bolo/articles');
 
 
 if (!response.ok) {
@@ -35,4 +35,3 @@ console.error('Error fetching or parsing data:', error);
 		</section>
 	</main>
 </Layout>
-

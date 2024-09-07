@@ -1,0 +1,103 @@
+---
+interface Props {
+    id_Modal: string;
+    id_Button: string;
+}
+
+const {id_Modal, id_Button } = Astro.props;
+---
+
+<div
+  id={id_Modal}
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-10"
+>
+  <div class="bg-green-100 rounded-lg shadow-lg p-4 max-w-lg max-w-[90vw] max-h-[75vh] overflow-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+    <slot/>
+    <button
+      id={id_Button}
+      class="fixed right-8 top-8 rounded bg-black/60 p-4 transition hover:scale-150 hover:bg-green-600 hover:text-white"
+      >
+      <svg
+        class="size-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .politica-dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    animation-name: join-anim;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes join-anim {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .modal-content {
+    background: #222; 
+    color: #fff;
+    border-radius: 8px; 
+    max-height: 80vh; 
+    overflow-y: auto; 
+  }
+</style>
+
+<script define:vars={{ id_Modal, id_Button }}>
+    function handleClose() {
+      const modal = document.getElementById(id_Modal);
+      if (modal) {
+        modal.classList.add("hidden");
+      }
+    }
+  
+    function handleKeyPress(event) {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    }
+  
+    function handleClickOutside(event) {
+      const modal = document.getElementById(id_Modal);
+      const modalContent = document.querySelector(`#${id_Modal} > div`);
+      
+      if (modal && !modalContent.contains(event.target)) {
+        handleClose();
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const closeModalButton = document.getElementById(id_Button);
+      if (closeModalButton) {
+        closeModalButton.addEventListener("click", handleClose);
+      }
+  
+      document.addEventListener("keydown", handleKeyPress);
+  
+      const modal = document.getElementById(id_Modal);
+      if (modal) {
+        modal.addEventListener("click", handleClickOutside);
+      }
+    });
+  </script>
+  
+  
