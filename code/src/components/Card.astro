@@ -1,10 +1,9 @@
 ---
 import Photo from "./base/Photo.astro";
+import Modal from "./base/Modal.astro";
 
 const { product } = Astro.props;
 const { id, article,description, img, price } = product;
-
-const imgUrl = new URL(img, import.meta.url).href;
 
 ---
 
@@ -12,7 +11,7 @@ const imgUrl = new URL(img, import.meta.url).href;
   class="bg-white p-8 rounded-lg cursor-pointer shadow-md relative group"
   data-id={id}
   data-description={description}
-  data-image-url={imgUrl}
+  data-image-url={img}
   data-price={price}
 >
   <div class="relative flex justify-center items-center">
@@ -23,9 +22,9 @@ const imgUrl = new URL(img, import.meta.url).href;
       <span
         class="flex items-center justify-center border border-green-500 h-12 w-12 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
       >
-        <a href="#">
-          <i class="fa-regular fa-eye text-xl"></i>
-        </a>
+      <button class={`open-modal-${id}`}>
+        <i class="fa-regular fa-eye text-xl"></i>
+      </button>
       </span>
       <span
         class="flex items-center justify-center border border-green-500 h-12 w-12 rounded-full cursor-pointer transition-colors duration-500 ease-in-out hover:bg-green-500 hover:text-white"
@@ -54,3 +53,24 @@ const imgUrl = new URL(img, import.meta.url).href;
     {description}
   </h3>
 </div>
+<Modal id_Modal={`modal-${id}`} id_Button={`button-${id}`}>
+  <Photo src={`${img}`} title={article} clases="max-w-[90vw] max-h-[75vh]"/>
+</Modal>
+
+<script define:vars={{ id }}>
+  // Function to open the modal
+  const handleOpenModal = (modalId) => {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove('hidden');
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add event listener to button to open the modal
+    const modalButton = document.querySelector(`.open-modal-${id}`);
+    if (modalButton) {
+      modalButton.addEventListener('click', () => handleOpenModal(`modal-${id}`));
+    }
+  });
+</script>

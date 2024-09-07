@@ -1,4 +1,5 @@
 ---
+import Modal from "./base/Modal.astro"
 import ModalPrivacidad from "./ModalPrivacidad.astro"
 import ModalTerminos from "./ModalTerminos.astro"
 ---
@@ -37,8 +38,8 @@ import ModalTerminos from "./ModalTerminos.astro"
         <div class="flex flex-col gap-8">
           <p class="font-semibold text-2xl uppercase text-white">Información</p>
           <ul class="space-y-4 text-white text-lg font-light">
-            <li><button class="open-modal-privacity-button hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Políticas de Privacidad</button></li>
-            <li><button class="open-modal-conditions-button hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Términos y Condiciones</button></li>
+            <li><button class="open-modal-privacity hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Políticas de Privacidad</button></li>
+            <li><button class="open-modal-conditions hover:text-green-500 bg-transparent border-none cursor-pointer text-white font-normal">Términos y Condiciones</button></li>
           </ul>
         </div>
   
@@ -70,27 +71,30 @@ import ModalTerminos from "./ModalTerminos.astro"
       </div>
     </div>
   </footer>
-  <ModalPrivacidad />
-  <ModalTerminos />
+
+  <Modal id_Modal="privacidad" id_Button="close_privacidad">  <ModalPrivacidad />
+  </Modal>
+  <Modal id_Modal="condiciones" id_Button="close_condiciones">  <ModalTerminos />
+  </Modal>
 
   <script>
     const handleOpenModalPrivacidad = () => {
-      const modalPrivacity = document.getElementById('modal-privacidad')!;
+      const modalPrivacity = document.getElementById('privacidad')!;
       modalPrivacity.classList.remove('hidden');
     };
   
     document.addEventListener('DOMContentLoaded', () => {
-      const modalPrivacityButton = document.querySelector('.open-modal-privacity-button')!;
+      const modalPrivacityButton = document.querySelector('.open-modal-privacity')!;
       modalPrivacityButton.addEventListener('click', handleOpenModalPrivacidad);
     });
 
     const handleOpenModalTerminos = () => {
-      const modalConditions = document.getElementById('modal-terminos-y-condiciones')!;
+      const modalConditions = document.getElementById('condiciones')!;
       modalConditions.classList.remove('hidden');
     };
   
     document.addEventListener('DOMContentLoaded', () => {
-      const modalConditionsButton = document.querySelector('.open-modal-conditions-button')!;
+      const modalConditionsButton = document.querySelector('.open-modal-conditions')!;
       modalConditionsButton.addEventListener('click', handleOpenModalTerminos);
     });
   </script>
